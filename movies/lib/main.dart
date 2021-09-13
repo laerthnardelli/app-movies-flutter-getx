@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+
+import 'modules/splash/splash_module.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,25 +16,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('GetX'),
-      ),
-      body: Center(
-        child: Container(
-          child: Text('GetX'),
-        ),
-      ),
+      getPages: [
+        ...SplashModule().routers,
+      ],
     );
   }
 }
