@@ -1,10 +1,10 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:movies/application/modules/module.dart';
-import 'package:movies/modules/splash/splash_page.dart';
+import 'package:movies/modules/login/login_page.dart';
 
-class SplashModule implements Module {
+class LoginModule implements Module {
   @override
   List<GetPage> routers = [
-    GetPage(name: '/', page: () => SplashPage()),
+    GetPage(name: '/login', page: () => LoginPage()),
   ];
 }
