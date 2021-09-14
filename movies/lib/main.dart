@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movies/modules/login/login_module.dart';
 
+import 'application/bindings/aplication_bindings.dart';
 import 'modules/splash/splash_module.dart';
 
 void main() async {
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
+      initialBinding: ApplicationBindings(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
