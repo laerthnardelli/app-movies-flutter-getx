@@ -9,8 +9,7 @@ class LoginController extends GetxController with LoaderMixin, MaessagesMixin {
   final message = Rxn<MessageModel>();
 
   LoginController({
-    required LoginService
-    loginService,
+    required LoginService loginService,
   }) : _loginService = loginService;
 
   @override
@@ -21,16 +20,18 @@ class LoginController extends GetxController with LoaderMixin, MaessagesMixin {
   }
 
   void login() async {
-    loading.value = true;
-    await 2.seconds.delay();
-    //await Future.delayed(Duration(seconds: 2));
-    //loading.value = false;
-    loading(false);
-    message(
-        MessageModel.error(title: 'Título Erro', message: 'Menssagem de Erro'));
-    await 1.seconds.delay();
-    message(
-        MessageModel.info(title: 'Título Info', message: 'Menssagem de Info'));
-    await 1.seconds.delay();
+    try {
+      loading(true);
+      await _loginService.login();
+      loading(false);
+      message(MessageModel.info(
+          title: 'Sucesso', message: 'Login Realizado com sucesso'));
+    } catch (e, s) {
+      print(e);
+      print(s);
+      loading(false);
+      message(
+          MessageModel.error(title: 'Erro', message: 'Erro ao realizar Login'));
+    }
   }
 }
