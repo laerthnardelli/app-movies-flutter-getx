@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:movies/modules/login/login_controller.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends GetView<LoginController> {
+  //final controller = Get.find<LoginController>(); //intancia de LoginController da mesma forma que o GetView
   const LoginPage({Key? key}) : super(key: key);
 
   @override
