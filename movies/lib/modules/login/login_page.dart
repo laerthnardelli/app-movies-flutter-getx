@@ -41,9 +41,9 @@ class LoginPage extends GetView<LoginController> {
                     text: 'Entrar com o Google',
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(100)),
-                    onPressed: () {},
+                    onPressed: () => controller.login(),
                   ),
-                )
+                ),
               ],
             ),
           ),
