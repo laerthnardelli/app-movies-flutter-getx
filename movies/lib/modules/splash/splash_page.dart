@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SplashPage extends StatelessWidget {
+  //var controller = Get.put(SplashController());
+
   const SplashPage({Key? key}) : super(key: key);
 
   @override
