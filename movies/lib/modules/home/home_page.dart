@@ -7,11 +7,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Home Page')),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.movie), label: 'Filmes'),
-          BottomNavigationBarItem(icon: Icon(FilmesAppIcons.heart_empty), label: 'Filmes'),
-          BottomNavigationBarItem(icon: Icon(Icons.logout_outlined), label: 'Sair'),
+          BottomNavigationBarItem(
+              icon: Icon(FilmesAppIcons.heart_empty), label: 'Filmes'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.logout_outlined), label: 'Sair'),
         ],
       ),
       body: Container(
