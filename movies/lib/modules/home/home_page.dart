@@ -30,7 +30,7 @@ class HomePage extends GetView<HomeController> {
       }),
       body: Navigator(
         initialRoute: '/movies',
-        key: Get.nestedKey(1),
+        key: Get.nestedKey(HomeController.NAVIGATOR_KEY),
         onGenerateRoute: (settings) {
           if (settings.name == '/movies') {
             return GetPageRoute(
