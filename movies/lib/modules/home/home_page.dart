@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/application/ui/filmes_app_icons_icons.dart';
+import 'package:movies/application/ui/theme_extensions.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -9,6 +10,8 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Page')),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: context.themeRed,
+        unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.movie), label: 'Filmes'),
           BottomNavigationBarItem(
