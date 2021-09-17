@@ -22,7 +22,16 @@ class MoviesGroup extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          MovieCard(),
+          SizedBox(
+            height: 280,
+            child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return MovieCard();
+                }),
+          )
         ],
       ),
     );
