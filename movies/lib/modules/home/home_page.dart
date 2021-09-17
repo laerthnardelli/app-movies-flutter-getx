@@ -4,6 +4,7 @@ import 'package:movies/application/ui/filmes_app_icons_icons.dart';
 import 'package:movies/application/ui/theme_extensions.dart';
 import 'package:movies/modules/favorites/favorites_page.dart';
 import 'package:movies/modules/home/home_controller.dart';
+import 'package:movies/modules/movies/movies_bindings.dart';
 import 'package:movies/modules/movies/movies_page.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -36,6 +37,7 @@ class HomePage extends GetView<HomeController> {
             return GetPageRoute(
               settings: settings,
               page: () => MoviesPage(),
+              binding: MoviesBindings(),
             );
           }
 
