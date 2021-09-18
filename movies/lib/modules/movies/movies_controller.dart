@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:movies/application/ui/messages/messages_mixin.dart';
 import 'package:movies/models/genre_model.dart';
-import 'package:movies/services/login/genres/genres_service.dart';
+import 'package:movies/services/genres/genres_service.dart';
 
 class MoviesController extends GetxController with MaessagesMixin {
   final GenresService _genresService;
