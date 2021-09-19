@@ -3,7 +3,7 @@ import 'dart:convert';
 class MovieModel {
   final int id;
   final String title;
-  final String releasesDate;
+  final String releaseDate;
   final String posterPath;
   final List<int> genres;
   final bool favorite;
@@ -11,7 +11,7 @@ class MovieModel {
   MovieModel({
     required this.id,
     required this.title,
-    required this.releasesDate,
+    required this.releaseDate,
     required this.posterPath,
     required this.genres,
     required this.favorite,
@@ -21,7 +21,7 @@ class MovieModel {
     return {
       'id': id,
       'title': title,
-      'releases_date': releasesDate,
+      'release_date': releaseDate,
       'poster_path': posterPath,
       'genre_ids': genres,
       'favorite': favorite,
@@ -39,13 +39,12 @@ class MovieModel {
   //   );
   // }
 
-
-   factory MovieModel.fromMap(Map<String, dynamic> map) {
+  factory MovieModel.fromMap(Map<String, dynamic> map) {
     return MovieModel(
       id: map['id'] ?? 0,
       title: map['title'] ?? '',
-      releasesDate: map['releases_date'] ?? '',
-      posterPath: map['poster_path'] ?? '',
+      releaseDate: map['release_date'] ?? '',
+      posterPath: 'https://image.tmdb.org/t/p/w200/${map['poster_path']}',
       genres: List<int>.from(map['genre_ids'] ?? const []),
       favorite: map['favorite'] ?? false,
     );
@@ -53,5 +52,6 @@ class MovieModel {
 
   String toJson() => json.encode(toMap());
 
-  factory MovieModel.fromJson(String source) => MovieModel.fromMap(json.decode(source));
+  factory MovieModel.fromJson(String source) =>
+      MovieModel.fromMap(json.decode(source));
 }

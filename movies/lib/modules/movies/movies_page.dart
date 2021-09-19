@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movies/modules/movies/movies_controller.dart';
 import 'package:movies/modules/movies/widgets/movies_filters.dart';
 import 'package:movies/modules/movies/widgets/movies_group.dart';
 import 'package:movies/modules/movies/widgets/movies_header.dart';
 
-class MoviesPage extends StatelessWidget {
+class MoviesPage extends GetView<MoviesController> {
   const MoviesPage({Key? key}) : super(key: key);
 
   @override
@@ -15,8 +16,14 @@ class MoviesPage extends StatelessWidget {
         children: [
           MoviesHeader(),
           MoviesFilters(),
-          MoviesGroup(title: 'Mais populares'),
-          MoviesGroup(title: 'Top filmes'),
+          MoviesGroup(
+            title: 'Mais populares',
+            movies: controller.popularMovies,
+          ),
+          MoviesGroup(
+            title: 'Top filmes',
+            movies: controller.topRatedMovies,
+          ),
         ],
       ),
     );
