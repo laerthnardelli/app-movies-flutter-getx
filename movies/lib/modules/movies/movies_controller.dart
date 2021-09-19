@@ -37,7 +37,7 @@ class MoviesController extends GetxController with MaessagesMixin {
     super.onReady();
     try {
       final genresData = await _genresService.getGenres();
-      genresData.assignAll(genres);
+      genres.assignAll(genresData);
 
       final popularMoviesData = await _moviesService.getPopularMovies();
       popularMovies.assignAll(popularMoviesData);
