@@ -2,7 +2,7 @@ import 'package:movies/models/movie_model.dart';
 import 'package:movies/repositories/movies/movies_repository.dart';
 import 'package:movies/services/movies/movies_service.dart';
 
-class MoviesServiceImpl implements MoviesServie {
+class MoviesServiceImpl implements MoviesService {
   final MoviesRepository _moviesRepository;
 
   MoviesServiceImpl({

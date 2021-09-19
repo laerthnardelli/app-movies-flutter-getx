@@ -24,7 +24,7 @@ class ApplicationBindings implements Bindings {
     Get.put(AuthService()).init();
 
     Get.lazyPut<MoviesRepository>(() => MoviesRepositoryImpl(restClient: Get.find()));
-    Get.lazyPut<MoviesServie>(() => MoviesServiceImpl(moviesRepository: Get.find()));
+    Get.lazyPut<MoviesService>(() => MoviesServiceImpl(moviesRepository: Get.find()));
   }
 }
 
