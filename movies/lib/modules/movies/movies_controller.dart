@@ -73,21 +73,21 @@ class MoviesController extends GetxController with MaessagesMixin {
   }
 
   void filterMoviesByGenre(GenreModel? genreModel) {
-    var genreFilter = genreModel;
+    //var genreFilter = genreModel;
 
-    if (genreFilter?.id == genreSelected.value?.id) {
-      genreFilter = null; //se ele já for selecionado
+    if (genreModel?.id == genreSelected.value?.id) {
+      genreModel = null; //se ele já for selecionado
     }
 
-    genreSelected.value = genreFilter;
+    genreSelected.value = genreModel;
 
-    if (genreFilter != null) {
+    if (genreModel != null) {
       var newPopularMovies = _popularMoviesOriginal.where((movie) {
-        return movie.genres.contains(genreFilter?.id);
+        return movie.genres.contains(genreModel?.id);
       });
 
       var newTopRatedMovies = _topRatedMoviesOriginal.where((movie) {
-        return movie.genres.contains(genreFilter?.id);
+        return movie.genres.contains(genreModel?.id);
       });
 
       popularMovies.assignAll(newPopularMovies);
