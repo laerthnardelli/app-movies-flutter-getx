@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/modules/movies/movies_controller.dart';
 import 'package:movies/modules/movies/widgets/movies_filters.dart';
+
 import 'package:movies/modules/movies/widgets/movies_group.dart';
 import 'package:movies/modules/movies/widgets/movies_header.dart';
 
