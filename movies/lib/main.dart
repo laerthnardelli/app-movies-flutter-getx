@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:movies/application/ui/filmes_app_ui_config.dart';
 import 'package:movies/modules/login/login_module.dart';
+import 'package:movies/modules/movie_detail/movie_detail_module.dart';
 
 import 'application/bindings/aplication_bindings.dart';
 import 'modules/home/home_module.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         ...SplashModule().routers,
         ...LoginModule().routers,
         ...HomeModule().routers,
+        ...MovieDetailModule().routers,
       ],
     );
   }
