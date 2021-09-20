@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/models/movie_detail_model.dart';
+import 'package:movies/modules/movie_detail/widgets/movie_detail_content/movie_detail_content_production_companies.dart';
 import 'package:movies/modules/movie_detail/widgets/movie_detail_content/movie_detail_content_title.dart';
 import 'package:movies/modules/movie_detail/widgets/movie_detail_content_credits.dart';
 
@@ -14,6 +15,7 @@ class MovieDetailContent extends StatelessWidget {
       children: [
         MovieDetailContentTitle(movie: movie),
         MovieDetailContentCredits(movie: movie),
+        MovieDetailContentProductionCompanies(movie: movie),
       ],
     );
   }
