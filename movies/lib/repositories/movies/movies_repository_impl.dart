@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:movies/application/rest_client/rest_client.dart';
 import 'package:movies/models/movie_detail_model.dart';
@@ -75,6 +76,36 @@ class MoviesRepositoryImpl implements MoviesRepository {
       //print(result.statusText);
       throw Exception('Erro ao buscar detalhes do filme');
     }
-    return result.body; //?? <MovieDetailModel>[]; pois ele ja retorna como opcional o MovieDetailModel?.
+    return result
+        .body; //?? <MovieDetailModel>[]; pois ele ja retorna como opcional o MovieDetailModel?.
+  }
+
+  @override
+  Future<void> addOrRemoveFavorite(String userId, MovieModel movie) async {
+    try {
+      var favoriteColletction = FirebaseFirestore.instance
+          .collection('favorities')
+          .doc(userId)
+          .collection('movies');
+
+      if (movie.favorite) {
+        favoriteColletction.add(movie.toMap());
+      } else {
+        var favoriteData = await favoriteColletction
+            .where('id', isEqualTo: movie.id)
+            .limit(1)
+            .get();
+
+        favoriteData.docs.first.reference
+            .delete(); //como só tem 1, posso fazer assim e vez de percorrer com um for in
+        // var docs = favoriteData.docs;
+        // for (var doc in docs) {
+        //   doc.reference.delete();
+        // }
+      }
+    } catch (e) {
+      print('Erro ao favoritar um filme');
+      rethrow;
+    }
   }
 }

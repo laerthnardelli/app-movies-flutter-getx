@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:movies/application/auth/auth_service.dart';
 import 'package:movies/application/ui/messages/messages_mixin.dart';
 import 'package:movies/models/genre_model.dart';
 import 'package:movies/models/movie_model.dart';
@@ -8,6 +9,7 @@ import 'package:movies/services/movies/movies_service.dart';
 class MoviesController extends GetxController with MaessagesMixin {
   final GenresService _genresService;
   final MoviesService _moviesService;
+  final AuthService _authService;
 
   final _message = Rxn<MessageModel>();
   final genres = <GenreModel>[].obs;
@@ -22,9 +24,11 @@ class MoviesController extends GetxController with MaessagesMixin {
 
   MoviesController(
       {required GenresService genresService,
-      required MoviesService moviesService})
+      required MoviesService moviesService,
+      required AuthService authService})
       : _genresService = genresService,
-        _moviesService = moviesService;
+        _moviesService = moviesService,
+        _authService = authService;
 
   @override
   void onInit() {
@@ -39,6 +43,17 @@ class MoviesController extends GetxController with MaessagesMixin {
       final genresData = await _genresService.getGenres();
       genres.assignAll(genresData);
 
+      await getMovies();
+    } catch (e, s) {
+      print(e);
+      print(s);
+      _message(MessageModel.error(
+          title: 'Erro', message: 'Erro ao buscar dados da página'));
+    }
+  }
+
+  Future<void> getMovies() async {
+    try {
       final popularMoviesData = await _moviesService.getPopularMovies();
       popularMovies.assignAll(popularMoviesData);
       _popularMoviesOriginal = popularMoviesData;
@@ -95,6 +110,16 @@ class MoviesController extends GetxController with MaessagesMixin {
     } else {
       popularMovies.assignAll(_popularMoviesOriginal);
       topRatedMovies.assignAll(_topRatedMoviesOriginal);
+    }
+  }
+
+  Future<void> favoriteMovie(MovieModel movie) async {
+    final user = _authService.user;
+    if (user != null) {
+      var newMovie = movie.copyWith(favorite: !movie.favorite);
+
+      await _moviesService.addOrRemoveFavorite(user.uid, newMovie);
+      await getMovies();
     }
   }
 }

@@ -8,7 +8,9 @@ import 'package:movies/models/movie_model.dart';
 class MovieCard extends StatelessWidget {
   final dateFormat = DateFormat('y');
   final MovieModel movie;
-  MovieCard({Key? key, required this.movie}) : super(key: key);
+  final VoidCallback favoriteCallback;
+
+  MovieCard({Key? key, required this.movie, required this.favoriteCallback}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class MovieCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       clipBehavior: Clip.antiAlias,
                       child: Image.network(
-                        movie.posterPath,
+                        'https://image.tmdb.org/t/p/w200${movie.posterPath}',
                         width: 148,
                         height: 184,
                         fit: BoxFit.cover,
@@ -71,7 +73,7 @@ class MovieCard extends StatelessWidget {
                   height: 30,
                   child: IconButton(
                     iconSize: 13,
-                    onPressed: () {},
+                    onPressed: favoriteCallback,
                     icon: Icon(
                       FilmesAppIcons.heart_empty,
                       color: Colors.grey,
