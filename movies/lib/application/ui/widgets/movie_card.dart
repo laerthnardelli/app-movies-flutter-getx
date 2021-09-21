@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import 'package:movies/application/ui/filmes_app_icons_icons.dart';
+import 'package:movies/application/ui/theme_extensions.dart';
 import 'package:movies/models/movie_model.dart';
 
 class MovieCard extends StatelessWidget {
@@ -10,7 +11,8 @@ class MovieCard extends StatelessWidget {
   final MovieModel movie;
   final VoidCallback favoriteCallback;
 
-  MovieCard({Key? key, required this.movie, required this.favoriteCallback}) : super(key: key);
+  MovieCard({Key? key, required this.movie, required this.favoriteCallback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +77,10 @@ class MovieCard extends StatelessWidget {
                     iconSize: 13,
                     onPressed: favoriteCallback,
                     icon: Icon(
-                      FilmesAppIcons.heart_empty,
-                      color: Colors.grey,
+                      movie.favorite
+                          ? FilmesAppIcons.heart
+                          : FilmesAppIcons.heart_empty,
+                      color: movie.favorite ? context.themeRed : Colors.grey,
                     ),
                   ),
                 ),
